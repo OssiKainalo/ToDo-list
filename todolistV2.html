@@ -1,6 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+	<link rel="stylesheet" type="text/css" href="style.css">
 <script> // JavaScript starts here!
 function printItem() {
 var x = document.forms[0];
@@ -15,7 +16,7 @@ if(item.value == "" || day.value == "Day" || month.value == "month") {
 		alert ("The item doesn't have a name. Please add a name to the item!");
 
 	}
-	
+
 
 	if(day.value == "Day") {
 		day.style.borderColor = "red";
@@ -33,53 +34,55 @@ if(item.value == "" || day.value == "Day" || month.value == "month") {
 }
 else
 
-document.getElementById("Taulukko").innerHTML += "<p> " +item.value+ "&nbsp;|&nbsp;" +day.value+ "." +month.value+ "</p>"
+document.getElementById("Taulukko").innerHTML += "<h3><p><center> " +item.value+ "&nbsp;|&nbsp;" +day.value+ "." +month.value+ "</center></p></h3>"
 
-} 
+}
 </script>
 </head>
-
 <body>
-    <h1><center>Welcome to your to-do list</center></h1>
-<p><b>Item&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date</b></p>
+
+	<div class="split left">
+
+    <h1><center>New task: </center></h1>
+<h2><center><p><b>Item&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Due Date</b></p>
 <form onsubmit="return false">
-  <input id="item" name="item" rows="1" cols="25"></input> 
+  <input id="item" name="item" rows="1" cols="25"></input>
   <select name="day" id="day">
-    <option value="Day">Day         
+    <option value="Day">Day
     <option value="1">1
     <option value="2">2
     <option value="3">3
-	<option value="4">4
+		<option value="4">4
     <option value="5">5
     <option value="6">6
     <option value="7">7
     <option value="8">8
     <option value="9">9
-	<option value="10">10
+		<option value="10">10
     <option value="11">11
     <option value="12">12
-	<option value="13">13
+		<option value="13">13
     <option value="14">14
     <option value="15">15
-	<option value="16">16
+		<option value="16">16
     <option value="17">17
     <option value="18">18
     <option value="19">19
     <option value="20">20
     <option value="21">21
-	<option value="22">22
+		<option value="22">22
     <option value="23">23
     <option value="24">24
-	<option value="25">25
+		<option value="25">25
     <option value="26">26
     <option value="27">27
     <option value="28">28
-	<option value="29">29
+		<option value="29">29
     <option value="30">30
     <option value="31">31
   </select>
     <select name="month" id="month">
-    <option value="month">Month         
+    <option value="month">Month
     <option value="1">1
     <option value="2">2
     <option value="3">3
@@ -96,8 +99,19 @@ document.getElementById("Taulukko").innerHTML += "<p> " +item.value+ "&nbsp;|&nb
   <br>
     <input type="submit" value="Add" onclick="printItem()"></button>
 </form>
-<div id="Taulukko">
-</div>
+</center>
+</h2
+
+</div> <!-- split left-->
+
+	<div class="split right">
+		  <h1><center>To Do:</center></h1>
+			<div id=TaulukkoKehys>
+
+			<div id="Taulukko">
+			</div>
+						</div>
+		</div>
 </body>
 
 </html>
