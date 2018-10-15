@@ -3,12 +3,20 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="style.css">
 <script> // JavaScript alkaa
-function printItem() {  
+
+
+/* function createButton() { //button function test
+var test = ( document.all ) ? document.all['Taulukko'] : document.getElementById('Taulukko');
+test.innerHTML = '<button id="btn" name="btn">Check!</button>';
+}
+*/
+
+function printItem() {
 var x = document.forms[0];
 var item = x.item;
 var day = x.day;
 var month = x.month;
-
+var button = ( document.all ) ? document.all['Taulukko'] : document.getElementById('Taulukko'); //test continues
 
 if(item.value == "" || day.value == "Day" || month.value == "month") {
 
@@ -29,17 +37,17 @@ if(item.value == "" || day.value == "Day" || month.value == "month") {
 	}
 	else
 		month.style.removeProperty('border');
-		
+
 	alert ("The task cannot be added! \nPlease make sure that you have given a name to your task as well as a day and a month for your task's due date.");
 }
 else
 {
-document.getElementById("Taulukko").innerHTML += "<h3><p> " +item.value+ "&nbsp;|&nbsp;" +day.value+ "." +month.value+ "</p></h3>"
+document.getElementById("Taulukko").innerHTML +=  "<h3><p>" +'<button id="btn" name="btn">Check!</button>'+" "+item.value+ "&nbsp;|&nbsp;" +day.value+ "." +month.value +"</h3></p>" ;
 		item.style.removeProperty('border');
 		day.style.removeProperty('border');
 		month.style.removeProperty('border')
 }
-} 
+} // function print item closure
 </script>
 </head>
 <body>
@@ -108,13 +116,17 @@ document.getElementById("Taulukko").innerHTML += "<h3><p> " +item.value+ "&nbsp;
 </div> <!-- split left-->
 
 	<div class="split right">
-		  <h1><center>To Do:</center></h1>
+		  <h4>To Do:</h4>
 			<div id=TaulukkoKehys>
 
 			<div id="Taulukko">
-			</div>
-						</div>
-		</div>
+			</div><!-- Taulukko-->
+		</div><!-- TaulukkoKehys-->
+								<h4>Done:</h4>
+								<div id=TaulukkoKehys2>
+								</div><!-- TaulukkoKehys2-->
+		</div><!-- split right-->
+
 </body>
 
 </html>

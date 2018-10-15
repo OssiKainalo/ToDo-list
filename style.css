@@ -3,9 +3,9 @@ body {
 }
 
 h1 {
-  font-family: calibri;
+  font-family: ar cena, calibri;
     color: white;
-    font-size: 50px;
+    font-size: 70px;
 }
 
 h2 {
@@ -16,9 +16,17 @@ h2 {
 
 h3 {
   font-family: calibri;
-    color: red;
-    font-size: 30px;
+    color: black;
+    font-size: 25px;
 }
+
+h4 {
+  font-family: calibri;
+    color: black;
+    font-size: 40px;
+    margin: 10px;
+}
+
 
 /* Split the screen in half */
 .split {
@@ -34,6 +42,7 @@ h3 {
 /* Control the left side */
 .left {
  left: 0;
+ top: 20%;
  /* background-color: #333; */
 
 }
@@ -46,6 +55,12 @@ h3 {
 
 #TaulukkoKehys {
   background-color: grey;
-  height: 60%;
+  height: 40%;
+  width: 80%;
+}
+
+#TaulukkoKehys2 {
+  background-color: grey;
+  height: 30%;
   width: 80%;
 }
