@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+<script> // JavaScript alkaa
+
+
+/* function createButton() { //button function test
+var test = ( document.all ) ? document.all['Taulukko'] : document.getElementById('Taulukko');
+test.innerHTML = '<button id="btn" name="btn">Check!</button>';
+}
+*/
+
+function lisaaDone() {
+
+}
+
+function printItem() {
+var x = document.forms[0];
+var item = x.item;
+var day = x.day;
+var month = x.month;
+var button = ( document.all ) ? document.all['Taulukko'] : document.getElementById('Taulukko'); //test continues
+
+if(item.value == "" || day.value == "Day" || month.value == "month") {
+
+	if(item.value == "") {
+		item.style.borderColor = "red";
+	}
+	else
+		item.style.removeProperty('border');
+
+	if(day.value == "Day") {
+		day.style.borderColor = "red";
+	}
+	else
+		day.style.removeProperty('border');
+
+	if(month.value == "month") {
+		month.style.borderColor = "red";
+	}
+	else
+		month.style.removeProperty('border');
+
+	alert ("The task cannot be added! \nPlease make sure that you have given a name to your task as well as a day and a month for your task's due date.");
+}
+else
+{
+document.getElementById("Taulukko").innerHTML +=  "<h3><p>" +'<button id="btn" onclick="lisaaDone()" name="btn">Check!</button>'+" "+item.value+ "&nbsp;|&nbsp;" +day.value+ "." +month.value +"</h3></p>" ;
+		item.style.removeProperty('border');
+		day.style.removeProperty('border');
+		month.style.removeProperty('border')
+}
+} // function print item closure
+</script>
+</head>
+<body>
+
+	<div class="split left">
+
+    <h1><center>New task: </center></h1>
+<h2><center><p><b>Task's Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Due Date</b></p>
+<form onsubmit="return false">
+  <input id="item" name="item" rows="1" cols="25"></input>
+  <select name="day" id="day">
+    <option value="Day">Day
+    <option value="1">1
+    <option value="2">2
+    <option value="3">3
+		<option value="4">4
+    <option value="5">5
+    <option value="6">6
+    <option value="7">7
+    <option value="8">8
+    <option value="9">9
+		<option value="10">10
+    <option value="11">11
+    <option value="12">12
+		<option value="13">13
+    <option value="14">14
+    <option value="15">15
+		<option value="16">16
+    <option value="17">17
+    <option value="18">18
+    <option value="19">19
+    <option value="20">20
+    <option value="21">21
+		<option value="22">22
+    <option value="23">23
+    <option value="24">24
+		<option value="25">25
+    <option value="26">26
+    <option value="27">27
+    <option value="28">28
+		<option value="29">29
+    <option value="30">30
+    <option value="31">31
+    </select>
+    <select name="month" id="month">
+    <option value="month">Month
+    <option value="1">1
+    <option value="2">2
+    <option value="3">3
+  	<option value="4">4
+    <option value="5">5
+    <option value="6">6
+    <option value="7">7
+    <option value="8">8
+    <option value="9">9
+  	<option value="10">10
+    <option value="11">11
+    <option value="12">12
+    </select>
+  <br>
+    <input type="submit" value="Add" onclick="printItem()"></button>
+</form>
+</center>
+</h2
+
+</div> <!-- split left-->
+
+	<div class="split right">
+		  <h4>To Do:</h4>
+			<div id=TaulukkoKehys>
+
+			<div id="Taulukko">
+			</div><!-- Taulukko-->
+		</div><!-- TaulukkoKehys-->
+								<h4>Done:</h4>
+								<div id=TaulukkoKehys2>
+								</div><!-- TaulukkoKehys2-->
+		</div><!-- split right-->
+
+</body>
+
+</html>
