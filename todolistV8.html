@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script> // JavaScript alkaa
+
+    var i = 0;
+
+    function lisaaDone(indexi, obj) {
+        document.getElementById("todotaulukko").deleteRow(obj.parentElement.parentElement.rowIndex);
+        document.getElementById("donetaulukko").innerHTML += obj.parentElement.parentElement.innerHTML;
+        document.getElementById("btn" + indexi).outerHTML = "";
+    }
+
+    function printItem() {
+        var x = document.forms[0];
+        var item = x.item;
+        var day = x.day;
+        var month = x.month;
+
+        if (item.value == "" || day.value == "Day" || month.value == "month") {
+
+            if (item.value == "") {
+                item.style.borderColor = "red";
+            }
+            else
+                item.style.removeProperty('border');
+
+            if (day.value == "Day") {
+                day.style.borderColor = "red";
+            }
+            else
+                day.style.removeProperty('border');
+
+            if (month.value == "month") {
+                month.style.borderColor = "red";
+            }
+            else
+                month.style.removeProperty('border');
+
+            alert("The task cannot be added! \nPlease make sure that you have given a name to your task as well as a day and a month for your task's due date.");
+        }
+        else {
+            i = i + 1;
+            document.getElementById("todotaulukko").innerHTML += "<tr id=\"row" + i + "\"><td>" + "<button id=\"btn" + i + "\" onclick=\"lisaaDone(" + i + ", this)\" name=\"btn\">Check!</button>" + "</td><td>" + item.value + "</td><td>" + day.value + "." + month.value + "</td></tr>";
+            item.style.removeProperty('border');
+            day.style.removeProperty('border');
+            month.style.removeProperty('border');
+            console.log("i id on " + i);
+        }
+    } // function print item closure
+    </script>
+</head>
+<body>
+
+<div class="split left">
+
+    <h1>
+        <center>New task:</center>
+    </h1>
+    <h2>
+        <center><p><b>Task's Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Due
+            Date</b></p>
+            <form onsubmit="return false">
+                <input id="item" name="item" rows="1" cols="25"></input>
+                <select name="day" id="day">
+                    <option value="Day">Day</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                </select>
+                <select name="month" id="month">
+                    <option value="month">Month</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+                <br>
+                <input type="submit" value="Add" onclick="printItem()"></button>
+            </form>
+        </center>
+    </h2
+
+</div> <!-- split left-->
+
+<div class="split right">
+    <h4>To Do:</h4>
+
+    <div id=TaulukkoKehys>
+        <table id=todotaulukko>
+        </table>
+        <div id="Taulukko">
+        </div><!-- Taulukko-->
+    </div><!-- TaulukkoKehys-->
+    <h4>Done:</h4>
+
+
+    <div id=TaulukkoKehys2>
+        <table id=donetaulukko>
+        </table>
+    </div><!-- TaulukkoKehys2-->
+</div><!-- split right-->
+
+</body>
+
+</html>
