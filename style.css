@@ -1,32 +1,31 @@
-<<<<<<< HEAD
 body {
    background-image: url(https://i.ytimg.com/vi/_IHP6t6gz64/maxresdefault.jpg);
 }
-
+/*
+h1 new Task
+h2 item Date
+h3 todo done
+*/
 h1 {
-  font-family: calibri;
+  font-family: 'Amatic SC', cursive;
     color: white;
-    font-size: 70px;
+    font-size: 100px;
 }
 
 h2 {
-  font-family: calibri;
+  font-family: 'Heebo', sans-serif;
     color: black;
-    font-size: 15px;
+    font-size: 18px;
 }
 
 h3 {
-  font-family: calibri;
-    color: black;
-    font-size: 25px;
-}
-
-h4 {
-  font-family: calibri;
+  font-family: 'Maven Pro', sans-serif;
     color: black;
     font-size: 40px;
     margin: 10px;
 }
+
+
 th, td {
     padding: 5px;
 }
@@ -58,86 +57,14 @@ th, td {
 
 #TaulukkoKehys {
   background-color: grey;
-  height: 40%;
+  height: 50%;
   width: 80%;
   overflow: scroll;
 }
 
 #TaulukkoKehys2 {
   background-color: grey;
-  height: 30%;
+  height: 25%;
   width: 80%;
   overflow: scroll;
 }
-=======
-body {
-   background-image: url(https://i.ytimg.com/vi/_IHP6t6gz64/maxresdefault.jpg);
-}
-
-h1 {
-  font-family: calibri;
-    color: white;
-    font-size: 70px;
-}
-
-h2 {
-  font-family: calibri;
-    color: black;
-    font-size: 15px;
-}
-
-h3 {
-  font-family: calibri;
-    color: black;
-    font-size: 25px;
-}
-
-h4 {
-  font-family: calibri;
-    color: black;
-    font-size: 40px;
-    margin: 10px;
-}
-th, td {
-    padding: 5px;
-}
-
-/* Split the screen in half */
-.split {
- height: 100%;
- width: 50%;
- position: fixed;
- z-index: 1;
- top: 0;
- overflow-x: hidden;
- padding-top: 20px;
-}
-
-/* Control the left side */
-.left {
- left: 0;
- top: 20%;
- /* background-color: #333; */
-
-}
-
-/* Control the right side */
-.right {
- right: 0;
-/*  background-color: #333; */
-}
-
-#TaulukkoKehys {
-  background-color: grey;
-  height: 40%;
-  width: 80%;
-  overflow: scroll;
-}
-
-#TaulukkoKehys2 {
-  background-color: grey;
-  height: 30%;
-  width: 80%;
-  overflow: scroll;
-}
->>>>>>> d09c275788556d6de71ef52325f6a7e5e159b87c
