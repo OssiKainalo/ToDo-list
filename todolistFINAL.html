@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script> // JavaScript alkaa
+
+    var i = 0;
+
+    function lisaaDone(indexi, obj) {
+        document.getElementById("todotaulukko").deleteRow(obj.parentElement.parentElement.rowIndex);
+        document.getElementById("donetaulukko").innerHTML += obj.parentElement.parentElement.innerHTML;
+        document.getElementById("btn" + indexi).outerHTML = "";
+    }
+
+    function printItem() { 			// printitem funktio alkaa.
+	
+	/* Printitem() funktion tarkoitus on tarkistaa sovelluksen HTML:n "<form>" elemetnistä tehtävien(Task) tiedot. Lisäksi
+	   funktio hyväksyy tai hylkää kyseiset tiedot (hyväksyy, jos tehtävällä on nimi ja päiväys), ilmoittaa puuttuvista
+	   tiedoista, sekä lisää tehtävän tiedot taulukkoon, jonka id on "todotaulukko". UI:ssä tiedot tulevat näkyviin "Do"
+	   -osion harmaaseen laatikkoon. Funktio luo myös jokaiselle tehtävälle oman "Checks" napin, jota käytetään tietojen
+	   siirtämiseen lisaaDone() funktiolla.
+	*/
+	
+        var x = document.forms[0];	/* "x" muutuja alustetaan ja se saa arvokseen "<form>" elementit sovelluksen HTML
+									 elementeistä. Tämä nopeuttaa "<form>" elementistä tietojen etsimisen ja viittaamisen,
+									 koska nyt form elementteihin voidaan viitata pelkällä "x" muuttujalla.*/
+									
+        var item = x.item;			/* Tässä alustetaan "item" muuttuja, joka saa arvokseen "<form>" elemmentin "item" 
+									 nimisen "<input>" elementin. */
+					
+        var day = x.day;			/* Tässä alustetaan "day" muuttuja, joka saa arvokseen "<form>" elemmentin "day" 
+									 nimisen "<select>" elementin. */
+									
+        var month = x.month;		/* Tässä alustetaan "month" muuttuja, joka saa arvokseen "<form>" elemmentin "month"
+									 nimisen "<select>" elementin. */
+
+        if (item.value == "" || day.value == "Day" || month.value == "month") {	
+
+		/* Kyseinen if-lause tarkistaa, onko "<item>", "<day>" ja "<month>" elementiteillä hyväksyttävät arvot. Tämän
+		if-lauseen tarkoitus on pitää huoli, ettei sovellus hyväksy lisättäviä tehtäviä(Task), joita yritetään lisätä ilman
+		nimeä tai päiväystä. If-lause myös värjää virheeliset elementit punaisella ja ilmoittaa käyttäjälle virheelisistä
+		tiedoista alert komennolla.
+		*/ 
+            if (item.value == "") {					// Uusi if-lause tarkistaa onko tehtävän nimen arvo tyhjä.									
+                item.style.borderColor = "red";		/* Jos nimen arvo on tyhjä, maalautuu "<input>" elementin palkin reunat
+													punaisella. Tämä punainen väri antaa käyttäjälle visuaalista apua
+													huomamaan, että tehtävän nimi puuttuu.
+														*/
+			}
+            else
+                item.style.removeProperty('border'); /*Jos nimellä on muu kuin tyhjä arvo, poistaa komento punaisen
+													 reunavärin "<input>" elementistä. Näin sovellus, kertoo että nimi on
+													hyväksytty. */
+													
+            if (day.value == "Day") {			/* Uusi if-lause, joka toimii samalla periaatteella, kuin nimen tarkistus,
+												mutta kyseisessä if-lauseessa tarkistetaan päiväys. Tyhjän sijaan,
+												päivän virheelinen arvo on "Day"*/
+												
+                day.style.borderColor = "red";
+            }
+            else
+                day.style.removeProperty('border');
+
+            if (month.value == "month") {		/* Uusi if-lause, joka toimii samalla periaatteella, kuin aikaisemmatkin
+												mutta kyseisessä if-lauseessa tarkistetaan kuukausi. päivän virheelinen
+												arvo on "month" */
+												
+                month.style.borderColor = "red";
+            }
+            else
+                month.style.removeProperty('border');
+
+            alert("The task cannot be added! \nPlease make sure that you have given a name to your task as well as a day and a month for your task's due date.");
+        
+			/* Ylhällä oleva komento suoritetaan, jos joku tehtävän tiedoista ovat virheelisiä. Tällöin sovellus heittää
+			virheilmoituksen käyttäjälle, eikä lisää tietoja "Do" -osioon. Tähän päättyy ensimmäinen funktion if-lause*/
+		
+		}
+        else {
+				/* Kun tehtävän(Task) tiedot ovat hyväksyttäviä, siirtyy  ensimmäinen if-lause else-osioon, jossa tiedot
+				   lisätään jo valmiiksi alustettuun HTML taulukkoon, jonka id on "todotaulukko" InnerHTML -komennolla.
+				   Lisäksi generoidaan nappi, jota käytetään tietojen siirtämiseen toiseen HTML taulukkoon, jonka id
+				   on "donetaulukko".
+				*/
+            i = i + 1;
+            document.getElementById("todotaulukko").innerHTML += "<tr id=\"row" + i + "\"><td>" + "<button id=\"btn" + i + "\" onclick=\"lisaaDone(" + i + ", this)\" name=\"btn\">Check!</button>" + "</td><td>" + item.value + "</td><td>" + day.value + "." + month.value + "</td></tr>";
+            
+			/* Yllä olevassa komennossa, syötetään valmiiseen HTML taulukkoon (jonka id on "todotaulukko") uusi rivi,
+			   joka sisältää:
+			   
+			   - "Check" napin, jonka painaminen kutsuu lisaaDone() funktioon ja jota käytetään kyseisen tehtävän siirtämiseen.
+			   - Tehtävän nimen
+			   - Tehtävän päivämäärä
+			
+			*/
+			
+			item.style.removeProperty('border'); //Tämä poistaa tarvittaessa punaisen taustanvärin tehtävän nimeämispalkista.
+            day.style.removeProperty('border');  //Tämä poistaa tarvittaessa punaisen taustanvärin tehtävän päivämäärästä
+            month.style.removeProperty('border');//Tämä poistaa tarvittaessa punaisen taustanvärin tehtävän kuukaudesta
+            console.log("i id on " + i);
+        }  // Ensimmäisen if-lauseen else osio loppuu tähän.
+    } // printitem() funktio loppuu tähän.
+    </script> <!--JavaScript loppuu tähän-->
+</head>
+<body>
+
+<div class="split left">
+
+    <h1>
+        <center>New task:</center>
+    </h1>
+    <h2>
+        <center><p><b>Task's Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Due Date</b></p>
+            <form onsubmit="return false"> <!--Tästä alkaa form, johon käyttäjä lisää tehtävänsä(Task) tiedot, joita
+											käsitellään JavaScriptillä-->	
+											
+                <input id="item" name="item" rows="1" cols="25"></input>
+                <select name="day" id="day">
+                    <option value="Day">Day</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                </select>
+                <select name="month" id="month">
+                    <option value="month">Month</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+                <br>
+                <input type="submit" value="Add" onclick="printItem()"></button> <!--Nappi, joka sitä painaessa, kutsuu
+																				 printitem() JavaScript funktion, joka
+																				 suorittaa itsensä "<Script>" elementissä-->	
+            </form>
+        </center>
+    </h2
+
+</div> <!-- split left-->
+
+<div class="split right">
+    <h4>To Do:</h4>
+
+    <div id=TaulukkoKehys>
+        <table id=todotaulukko> <!--Alustettu tyhjä taulukko, johon printitem() JavaScript funktio lisää tehtävät(Task)-->	
+        </table>
+        <div id="Taulukko">
+        </div><!-- Taulukko-->
+    </div><!-- TaulukkoKehys-->
+    <h4>Done:</h4>
+
+
+    <div id=TaulukkoKehys2>
+        <table id=donetaulukko> <!--Alustettu tyhjä taulukko, johon lisaaDone() JavaScript funktio lisää tehtävät(Task)-->	
+        </table>
+    </div><!-- TaulukkoKehys2-->
+</div><!-- split right-->
+
+</body>
+
+</html>
