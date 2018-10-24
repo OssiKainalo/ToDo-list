@@ -25,7 +25,6 @@ h3 {
     margin: 10px;
 }
 
-
 th, td {
     padding: 5px;
 }
@@ -53,6 +52,18 @@ th, td {
 .right {
  right: 0;
 /*  background-color: #333; */
+}
+
+#todotaulukko {
+  font-family: 'Heebo', sans-serif;
+  font-size: 17px;
+  color: black;
+}
+
+#donetaulukko {
+  font-family: 'Heebo', sans-serif;
+  font-size: 17px;
+  color: black;
 }
 
 #TaulukkoKehys {
