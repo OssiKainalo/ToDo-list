@@ -2,7 +2,7 @@
 README
 ********************************************************************************************************************************
 ToDo-list Projekti
-R0331 - Web sovellusten kehittäminen Javascriptillä 
+R0331 - Web sovellusten kehittäminen JavaScriptillä 
 
 Tekijät: Huotari Valtteri ja Otto Kainuulainen
 
