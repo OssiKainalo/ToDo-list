@@ -16,7 +16,7 @@ Sisällys:
 -style.css - sovelluksen käyttämä tyylitiedosto
 -styleorgi.css - sovelluksen vanhempi tyylitiedosto
 -Mockup.png - konseptikuva sovelluksesta
--raindrops.jpg - sovelluksen taustakuvatiedosto, jota loppujen lopuksi ei käytetty sovelluksessa
+-raindrops.jpg - sovelluksen käyttämä taustakuva
 
 
 ********************************************************************************************************************************
